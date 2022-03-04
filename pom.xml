@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.hongcheng.aibigdata.tools</groupId>
+    <artifactId>java-auto-ssh-password-free-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>Jspf</name>
+    <packaging>pom</packaging>
+    <description>Java auto ssh password free tools</description>
+
+    <properties>
+
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://172.16.1.217:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://172.16.1.217:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <modules>
+        <module>core</module>
+        <module>assembly</module>
+    </modules>
+</project>
