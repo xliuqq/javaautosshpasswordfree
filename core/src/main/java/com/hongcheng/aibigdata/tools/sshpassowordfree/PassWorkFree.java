@@ -137,7 +137,7 @@ public class PassWorkFree {
             System.out.println("输入3个参数：\n" +
                                    "第一个为用户名 \n" +
                                    "第二个为密码（节点通用）\n" +
-                                   "第三个为节点列表的文件, 格式为 'host[ password]', 每个节点可以不同密码（替换通用密码）\n";
+                                   "第三个为节点列表的文件, 格式为 'host[ password]', 每个节点可以不同密码（替换通用密码）\n");
         }
 
         String username = args[0];
