@@ -63,13 +63,13 @@ public class PassWorkFree {
 
             String tmpFile = "tmp_known_host.tmp";
             LOG.info("Download known hosts from [{}] to local file [{}].", mainHostPasswd.host, tmpFile);
-            RemoteScpExec.download(session, tmpFile, "/home/" + username + "/.ssh/known_hosts");
+            RemoteScpExec.download(session, tmpFile, getHome(username) + "/.ssh/known_hosts");
             session.disconnect();
 
             for (HostPasswd hostPasswd : hostPasswds) {
                 LOG.error("Send known host from local file [{}]  to [{}].", tmpFile, hostPasswd.host);
                 Session hostSession = getSession(username, hostPasswd);
-                RemoteScpExec.upload(hostSession, tmpFile, "/home/" + username + "/.ssh/known_hosts", 00644);
+                RemoteScpExec.upload(hostSession, tmpFile, getHome(username) + "/.ssh/known_hosts", 00644);
                 hostSession.disconnect();
             }
 
@@ -117,7 +117,7 @@ public class PassWorkFree {
                 LOG.info("Scp all pub key for host begin: {}", hostPasswd.host);
                 Session session = getSession(username, hostPasswd);
 
-                RemoteScpExec.upload(session, tmpFileName, "/home/" + username + "/.ssh/authorized_keys", 00600);
+                RemoteScpExec.upload(session, tmpFileName, getHome(username) + "/.ssh/authorized_keys", 00600);
 
                 session.disconnect();
                 LOG.info("Scp all pub key for host end: {}", hostPasswd.host);
@@ -130,6 +130,13 @@ public class PassWorkFree {
         new File(tmpFileName).deleteOnExit();
 
         return true;
+    }
+
+    private static String getHome(String username) {
+        if ("root".equals(username)) {
+            return "/root";
+        }
+        return "/home/" + username;
     }
 
     public static void main(String[] args) {
