@@ -6,8 +6,7 @@ Java 自动配置免密登录
 
 1. jar包获取
 
-- 使用 assembly 打包出来的jar包 
-- 或从[maven下载](http://172.16.1.217:8081/#browse/browse:maven-releases:com%2Fhongcheng%2Faibigdata%2Ftools%2Fjava-auto-ssh-password-free-assembly%2F1.0.0%2Fjava-auto-ssh-password-free-assembly-1.0.0-jar-with-dependencies.jar) 下载
+- 使用 assembly 打包出来的jar-with-dependencies包 
 
 2. 执行
 - 将 java-auto-ssh-password-free-assembly-1.0.0-jar-with-dependencies.jar 放到某个目录
