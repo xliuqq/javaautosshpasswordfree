@@ -1,0 +1,33 @@
+name: Release
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publishGitRelease:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build
+        run: mvn -B package --file pom.xml
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          # name: Name of the release. defaults to tag name
+          # body_path: Path to load text communicating notable changes in this release
+          # repository: Name of a target repository in <owner>/<repo> format. Defaults to GITHUB_REPOSITORY env variable
+          # target_commitish: Commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Defaults to repository default branch.
+          # Newline-delimited globs of paths to assets to upload for release
+          files: core/target/java-auto-ssh-password-free*.jar
+          fail_on_unmatched_files: true
+          # note you'll typically need to create a personal access token
+          # with permissions to create releases in the other repo.
+          # token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
